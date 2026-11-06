@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream Ultimate - Minor Project 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100 min-h-screen font-sans antialiased p-4 sm:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header & Navigation Tabs -->
+        <header class="flex flex-col sm:flex-row justify-between items-center my-8 gap-4 border-b border-slate-800/80 pb-6">
+            <div>
+                <h1 class="text-3xl font-black text-cyan-400 tracking-tight">🎬 CineStream Ultimate</h1>
+                <p class="text-slate-400 text-xs mt-1">Advanced API Cinema Explorer with Interactive Details & Local Favorites</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="filterView('all')" id="allTab" class="bg-cyan-400 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-cyan-500/20">Explore Catalog</button>
+                <button onclick="filterView('favorites')" id="favTab" class="bg-slate-900 text-slate-300 hover:text-cyan-400 font-bold text-xs px-4 py-2.5 rounded-xl border border-slate-800 transition">⭐ Saved Favorites (<span id="favCount">0</span>)</button>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="flex gap-3 max-w-xl mx-auto mb-6">
+            <input type="text" id="movieInput" placeholder="Search shows, anime, movies..." class="flex-1 bg-slate-900/90 border border-slate-800 px-5 py-3.5 rounded-2xl focus:outline-none focus:border-cyan-400 text-slate-200 placeholder-slate-500 text-sm shadow-inner">
+            <button id="searchBtn" class="bg-cyan-400 text-slate-950 font-bold px-7 py-3.5 rounded-2xl hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 text-sm">Search</button>
+        </div>
+
+        <!-- Quick Category Tags -->
+        <div id="quickChips" class="flex flex-wrap items-center gap-2 mb-10 justify-center">
+            <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Trending:</span>
+            <button onclick="quickSearch('Interstellar')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 px-3.5 py-1.5 rounded-xl transition border border-slate-800">Interstellar</button>
+            <button onclick="quickSearch('Batman')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 px-3.5 py-1.5 rounded-xl transition border border-slate-800">Batman</button>
+            <button onclick="quickSearch('Stranger Things')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 px-3.5 py-1.5 rounded-xl transition border border-slate-800">Stranger Things</button>
+            <button onclick="quickSearch('Breaking Bad')" class="text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 px-3.5 py-1.5 rounded-xl transition border border-slate-800">Breaking Bad</button>
+        </div>
+
+        <!-- Status Message -->
+        <div id="statusMsg" class="hidden text-center text-slate-400 mb-8 bg-slate-900/60 p-4 rounded-2xl border border-slate-800 max-w-md mx-auto text-sm"></div>
+
+        <!-- Results Grid -->
+        <div id="moviesGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    </div>
+
+    <!-- Detail Modal Overlay -->
+    <div id="detailModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 max-w-lg w-full rounded-3xl p-6 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-800 text-slate-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
